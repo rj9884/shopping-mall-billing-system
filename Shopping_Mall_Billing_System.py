@@ -36,10 +36,13 @@ def load_tables():
         mycursor.execute("show tables")
         data=mycursor.fetchall()
         for i in data:
-            if i[0]!="Customer":
+            if i[0]=="customer":
+                break
+            else:
                 C_Customer()
-        for i in data:
-            if i[0]!="Product":
+            if i[0]=="product":
+                break
+            else:
                 C_Product()
     except Exception as e:
         print("Error....",e)
@@ -131,9 +134,9 @@ def Modify_P():
             print("\t\t4.Change Product's Unit Price")
             print("\t\t5.Exit")
 
-            ch=input("Enter Your choice(1-6):")
-            if ch not in '123456':
-                print("\tPlz Enter Numbers Only...")
+            ch=input("Enter Your choice(1-5):")
+            if ch not in '12345':
+                print("\tPlz Enter valid choice...")
             elif ch=='1':
                 try:
                     print("*"*90)
@@ -200,7 +203,7 @@ def Editor():
         while True:
             pas=input("Enter Your Password:")
             if pas.lower()!='rj9884':
-                print("Wrong Password")
+                print("Wrong Password/try agin..")
             else: break
         while True:
             print('='*90)
@@ -214,7 +217,7 @@ def Editor():
            
             ch=input("Enter Your choice(1-5):")
             if ch not in '12345':
-                print("Plz Enter Numbers Only...")
+                print("Plz Enter correct Number Only...")
             elif ch=='1':
                 Add_P()
             elif ch=='2':
@@ -435,7 +438,7 @@ def buyprod():
 
 
     
-#load_tables()  
+load_tables()  
 while True:
     print("\n")
     print("❤"*52)
